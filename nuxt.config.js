@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'front',
+    title: 'BTC | USDT',
     htmlAttrs: {
       lang: 'en'
     },
@@ -11,12 +11,15 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {rel:"stylesheet", href:"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"}
+
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/font/font.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
