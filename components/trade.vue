@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="container0">
+    <div class="container">
     <div class="header">
       <h1>Place Older</h1>
       <div class="more" @mouseenter="showFunction(true)" @mouseleave="showFunction(false)">
@@ -39,6 +40,7 @@
     </div>
     <div class="action">
       <p><span>LogIn</span> or <span>Register Now</span></p>
+    </div>
     </div>
   </div>
 </template>
@@ -83,7 +85,14 @@
 </script>
 
 <style scoped>
+  .container0{
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    margin: 3px;
+  }
   .container {
+    border-radius: 5px;
     background-color: rgb(30 32 38);
     width: 100%;
     height: 400px;

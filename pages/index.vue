@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="info">
-
+      <info></info>
     </div>
     <div class="trade">
       <trade></trade>
@@ -15,10 +15,11 @@
 <script>
   import optionMenu from "../components/optionMenu";
   import Trade from "../components/trade";
+  import Info from "../components/info";
 
   export default {
     name: "index",
-    components: {Trade, optionMenu}
+    components: {Info, Trade, optionMenu}
   }
 </script>
 
