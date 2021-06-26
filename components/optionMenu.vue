@@ -33,6 +33,7 @@
 
 <style scoped>
   .wrap{
+    z-index: 100;
     position: relative;
     margin-left:40px ;
     display: flex;

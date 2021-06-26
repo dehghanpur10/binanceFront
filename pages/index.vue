@@ -1,18 +1,41 @@
 <template>
-  <div>
-<option-menu></option-menu>
-llll  </div>
+  <div class="container">
+    <div class="info">
+
+    </div>
+    <div class="trade">
+      <trade></trade>
+    </div>
+
+
+  </div>
 
 </template>
 
 <script>
   import optionMenu from "../components/optionMenu";
-    export default {
-        name: "index",
-      components:{optionMenu}
-    }
+  import Trade from "../components/trade";
+
+  export default {
+    name: "index",
+    components: {Trade, optionMenu}
+  }
 </script>
 
 <style scoped>
+  .container{
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(24 26 32);
+    display: flex;
+    z-index: 1;
+
+  }
+  .trade{
+    width: 24%;
+  }
+  .info{
+    width: 76%;
+  }
 
 </style>
