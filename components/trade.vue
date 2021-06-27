@@ -1,46 +1,44 @@
 <template>
   <div class="container0">
     <div class="container">
-    <div class="header">
-      <h1>Place Older</h1>
-      <div class="more" @mouseenter="showFunction(true)" @mouseleave="showFunction(false)">
-        <div class="circle" :class="{'hover':show}"></div>
-        <div class="circle" :class="{'hover':show}"></div>
-        <div class="circle" :class="{'hover':show}"></div>
+      <div class="header">
+        <h1>Place Older</h1>
+        <div class="more" @mouseenter="showFunction(true)" @mouseleave="showFunction(false)">
+          <div class="circle" :class="{'hover':show}"></div>
+          <div class="circle" :class="{'hover':show}"></div>
+          <div class="circle" :class="{'hover':show}"></div>
 
 
-        <div v-if="show" class="moreOption">
-          <h3>Trading Rules</h3>
-          <h3>FAQ</h3>
-          <h3>Spot Tutorial</h3>
+          <div v-if="show" class="moreOption">
+            <h3>Trading Rules</h3>
+            <h3>FAQ</h3>
+            <h3>Spot Tutorial</h3>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div @click="buy=true" style="border-bottom-left-radius: 7px;border-top-left-radius: 7px;"
-           :class="{'option':true,'buy':buy,'deActive':!buy}">BUY
+      <div class="section">
+        <div @click="buy=true" style="border-bottom-left-radius: 7px;border-top-left-radius: 7px;"
+             :class="{'option':true,'buy':buy,'deActive':!buy}">BUY
+        </div>
+        <div @click="buy=false" style="border-bottom-right-radius: 7px;border-top-right-radius: 7px"
+             :class="{'option':true,'sell':!buy,'deActive':buy}"> SELL
+        </div>
       </div>
-      <div @click="buy=false" style="border-bottom-right-radius: 7px;border-top-right-radius: 7px"
-           :class="{'option':true,'sell':!buy,'deActive':buy}"> SELL
+      <div class="type">
+        <div @click="trade='limit'"><p :class="{'select':trade==='limit'}">Limit</p></div>
+        <div @click="trade='market'"><p :class="{'select':trade==='market'}">Market</p></div>
+        <div @click="trade='stop-limit'"><p :class="{'select':trade==='stop-limit'}">Stop-limit</p></div>
       </div>
-    </div>
-    <div class="wallet">
-      <img src="/wallet.png">
-      <p> - {{type}}</p>
-    </div>
-    <div class="input" :class="{'cover':I1}">
-      <p>Price</p>
-      <input @focus="input1(true)" @blur="input1(false)" type="text">
-      <p>USDT</p>
-    </div>
-    <div class="input" :class="{'cover':I2}">
-      <p>Amount</p>
-      <input @focus="input2(true)" @blur="input2(false)" type="text">
-      <p>BTC</p>
-    </div>
-    <div class="action">
-      <p><span>LogIn</span> or <span>Register Now</span></p>
-    </div>
+
+      <div class="wallet">
+        <img src="/wallet.png">
+        <p> - {{type}}</p>
+      </div>
+
+      <component :is="trade" :buy="buy"></component>
+      <div class="action">
+        <p><span>LogIn</span> or <span>Register Now</span></p>
+      </div>
     </div>
   </div>
 </template>
@@ -55,10 +53,10 @@
 
 
       },
-      input1(state){
+      input1(state) {
         this.I1 = state;
       },
-      input2(state){
+      input2(state) {
         this.I2 = state;
       }
     },
@@ -68,8 +66,9 @@
         display: false,
         buy: true,
         type: "USDT",
-        I1:false,
-        I2:false
+        I1: false,
+        I2: false,
+        trade: 'limit'
       }
     },
     watch: {
@@ -85,17 +84,18 @@
 </script>
 
 <style scoped>
-  .container0{
+  .container0 {
     width: 100%;
-    height: 400px;
+    min-height: 400px;
     border-radius: 5px;
     margin: 3px;
   }
+
   .container {
     border-radius: 5px;
     background-color: rgb(30 32 38);
     width: 100%;
-    height: 400px;
+    min-height: 400px;
     padding: 10px;
     display: flex;
     align-content: flex-start;
@@ -185,6 +185,7 @@
     height: 50px;
     margin-top: 20px;
     border-radius: 7px;
+    margin-bottom: 30px;
 
   }
 
@@ -200,8 +201,31 @@
 
   }
 
+  .type {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+  }
+
+  .type div {
+    width: 33.33%;
+    display: flex;
+    /*justify-content: center;*/
+    color: gray;
+  }
+  .type div p{
+    padding: 7px;
+    cursor: pointer;
+  }
+
+  .select {
+    border-bottom: 3px solid #e89f23;
+    color: white;
+  }
+
   .wallet {
-    margin-top: 10px;
+    margin-top: 30px;
     padding-left: 20px;
     display: flex;
     justify-content: flex-start;
@@ -215,38 +239,9 @@
   .wallet p {
     color: white;
   }
-  .input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    margin-top: 25px;
-    padding: 5px;
-    background-color: #303030;
-    border-radius: 5px;
-  }
-  .input input{
-    width: 100%;
-    height: 80%;
-    background-color: rgba(0,0,0,0);
-    outline: none;
-    border: none;
-    color: #F5F5F5;
-    direction: rtl;
-    font-size: 14pt;
 
-  }
-  .input p{
-    font-size: 14pt;
 
-    padding: 5px;
-    color: #7F828B;
-  }
-  .cover{
-    border: 1px solid #e89f23;
-  }
-  .action{
+  .action {
     width: 80%;
     height: 40px;
     padding: 15px;
@@ -257,15 +252,18 @@
     margin: 50px auto;
     border-radius: 7px;
   }
-  .action p{
+
+  .action p {
     color: white;
     font-size: 14pt;
 
   }
-  .action p span{
+
+  .action p span {
     color: #e89f23;
   }
-  .action p span:hover{
+
+  .action p span:hover {
     cursor: pointer;
   }
 

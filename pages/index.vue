@@ -2,6 +2,10 @@
   <div class="container">
     <div class="info">
       <info></info>
+      <div class="main">
+        <div class="chart"></div>
+        <div class="book"></div>
+      </div>
     </div>
     <div class="trade">
       <trade></trade>
@@ -25,7 +29,8 @@
 
 <style scoped>
   .container{
-    width: 100%;
+    overflow: hidden;
+    max-width: 100%;
     height: 1000px;
     background-color: rgb(24 26 32);
     display: flex;
@@ -37,6 +42,9 @@
   }
   .info{
     width: 76%;
+  }
+  .main{
+    width: 100%;
   }
 
 </style>
